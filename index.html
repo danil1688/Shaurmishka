@@ -29,7 +29,11 @@
       --input-bg:#2a2a2a;
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
+
+    html,body{
+    height:100%
+    }
+
     body{
       margin:0;
       background:var(--dark);
@@ -42,35 +46,96 @@
       font-size:16px;
     }
 
-    .container{max-width:1140px}
-    .section-title{font-weight:700;font-size:1.1rem;color:var(--secondary);margin-bottom:.4rem}
-    .lead{color:var(--muted)}
-    .dark-card{background:var(--card-bg) !important;border:1px solid #333 !important;color:#fff}
-    .btn-order{background:var(--primary);color:#fff;border:none;border-radius:50px;padding:.6rem 1.2rem;font-weight:600}
-    .btn-order:hover{transform:scale(1.03);box-shadow:0 0 14px var(--primary)}
-    .rounded-pill{border-radius:50px}
+    .container{
+    max-width:1140px
+    }
 
-    .navbar{background: rgba(0,0,0,0.85) !important;backdrop-filter: blur(6px)}
-    .navbar-brand{color:var(--secondary) !important;font-family:'Dancing Script',cursive;font-size:1.7rem}
-    .nav-link{color:#fff !important;font-weight:600;transition:.2s}
-    .nav-link:hover{color:var(--secondary) !important;text-shadow:0 0 8px var(--secondary)}
+    .section-title{
+    font-weight:700;font-size:1.1rem;color:var(--secondary);margin-bottom:.4rem
+    }
 
-    .hero{min-height:100vh;display:flex;align-items:center;background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('foto/херофон.jpg');background-size:cover;background-position:center;color:#fff;padding-top:72px}
-    .title{font-family:'Dancing Script',cursive;font-size:clamp(2rem,4vw,4rem);font-weight:700;text-shadow:0 6px 18px rgba(0,0,0,0.6)}
+    .lead{
+    color:var(--muted)
+    }
 
-    .card{background:#0b0b0b !important;border:none;border-radius:14px;transition:.25s}
-    .card:hover{transform:translateY(-6px);box-shadow:0 16px 28px rgba(0,0,0,0.45)}
-    .card img{object-fit:cover;height:200px;width:100%}
-    .price-tag{font-weight:700}
+    .dark-card{
+    background:var(--card-bg) !important;border:1px solid #333 !important;color:#fff
+    }
 
-    .offer-card{background:#050505;border-radius:18px;transition:.25s;padding:1rem}
+    .btn-order{
+    background:var(--primary);color:#fff;border:none;border-radius:50px;padding:.6rem 1.2rem;font-weight:600
+    }
 
-    .accordion-button{background:#050505;color:#fff}
-    .accordion-button:not(.collapsed){background:var(--primary);color:#fff}
-    .accordion-body{background:#0f0f0f;color:#fff}
+    .btn-order:hover{
+    transform:scale(1.03);box-shadow:0 0 14px var(--primary)
+    }
+    .rounded-pill{
+    border-radius:50px
+    }
 
-    #menu .card-body,#menu .card-title,#menu .card-text,#menu .price-tag{color:#fff}
-    #menu .card-text,#menu .text-muted{opacity:.9}
+    .navbar{
+    background: rgba(0,0,0,0.85) !important;backdrop-filter: blur(6px)
+    }
+
+    .navbar
+    -brand{color:var(--secondary) !important;font-family:'Dancing Script',cursive;font-size:1.7rem
+    }
+
+    .nav-link{
+    color:#fff !important;font-weight:600;transition:.2s
+    }
+
+    .nav-link:hover{
+    color:var(--secondary) !important;text-shadow:0 0 8px var(--secondary)
+    }
+
+    .hero{
+    min-height:100vh;display:flex;align-items:center;background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('foto/херофон.jpg');background-size:cover;background-position:center;color:#fff;padding-top:72px
+    }
+
+    .title{
+    font-family:'Dancing Script',cursive;font-size:clamp(2rem,4vw,4rem);font-weight:700;text-shadow:0 6px 18px rgba(0,0,0,0.6)
+    }
+
+    .card{
+    background:#0b0b0b !important;border:none;border-radius:14px;transition:.25s
+    }
+
+    .card:hover{
+    transform:translateY(-6px);box-shadow:0 16px 28px rgba(0,0,0,0.45)
+    }
+
+    .card img{
+    object-fit:cover;height:200px;width:100%
+    }
+
+    .price-tag{
+    font-weight:700
+    }
+
+    .offer-card{
+    background:#050505;border-radius:18px;transition:.25s;padding:1rem
+    }
+
+    .accordion-button{
+    background:#050505;color:#fff
+    }
+
+    .accordion-button:not(.collapsed){
+    background:var(--primary);color:#fff
+    }
+
+    .accordion-body{
+    background:#0f0f0f;color:#fff
+    }
+
+    #menu .card-body,#menu .card-title,#menu .card-text,#menu .price-tag{
+    color:#fff
+    }
+
+    #menu .card-text,#menu .text-muted{
+    opacity:.9
+    }
 
     .form-control,.form-select{
       background:var(--input-bg) !important;
@@ -78,21 +143,37 @@
       color:#fff !important;
       border-radius:.5rem;
     }
-    .form-control::placeholder{color:#aaa;opacity:1}
-    .form-control:focus{border-color:var(--primary);box-shadow:0 0 0 .2rem rgba(255,107,53,.16) !important}
 
-    footer{background:#000;color:#ccc;padding-top:1.5rem}
+    .form-control::placeholder{
+    color:#aaa;opacity:1
+    }
 
-    .back-to-top{position:fixed;right:20px;bottom:24px;background:var(--primary);color:#000;padding:.6rem;border-radius:50%;display:flex;align-items:center;justify-content:center;transform:translateY(120%);transition:.28s;z-index:999}
-    .back-to-top.show{transform:translateY(0)}
+    .form-control:focus{
+    border-color:var(--primary);box-shadow:0 0 0 .2rem rgba(255,107,53,.16) !important
+    }
 
-    .badge-cart{display:inline-block;background:var(--secondary);color:#000;border-radius:50%;padding:.15rem .55rem;font-weight:700;position:relative;top:-6px;left:-8px}
+    footer{
+    background:#000;color:#ccc;padding-top:1.5rem
+    }
+
+    .back-to-top{
+    position:fixed;right:20px;bottom:24px;background:var(--primary);color:#000;padding:.6rem;border-radius:50%;display:flex;align-items:center;justify-content:center;transform:translateY(120%);transition:.28s;z-index:999
+    }
+
+    .back-to-top.show{
+    transform:translateY(0)
+    }
+
+    .badge-cart{
+    display:inline-block;background:var(--secondary);color:#000;border-radius:50%;padding:.15rem .55rem;font-weight:700;position:relative;top:-6px;left:-8px
+    }
 
     @media (max-width: 767px){
       .hero{padding-top:88px}
       .card img{height:160px}
       .btn-order{padding:.6rem .9rem}
     }
+    
     @media (max-width: 480px){
       .title{font-size:2.2rem}
       .navbar-brand{font-size:1.5rem}
@@ -863,8 +944,8 @@
             </div>
           </div>
         </div>
-      </div> <!-- /.tab-content -->
-    </div> <!-- /.container -->
+      </div> 
+    </div> 
   </section>
 
   <!-- ABOUT -->
