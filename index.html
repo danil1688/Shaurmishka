@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Shaurmishka — UAШАВЕРМА | Головна</title>
 
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -19,263 +19,92 @@
   <!-- AOS (Animate On Scroll) -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-<style>
-:root{
-  --primary:#ff6b35;     /* помаранчевий акцент */
-  --secondary:#ffbe33;   /* золотистий */
-  --dark:#0d0d0d;        /* головний фон */
-  --light:#f8f9fa;       /* світлий текст */
-}
+  <style>
+    :root{
+      --primary:#ff6b35;
+      --secondary:#ffbe33;
+      --dark:#0d0d0d;
+      --muted:#a8a8a8;
+      --card-bg:#1a1a1a;
+      --input-bg:#2a2a2a;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--dark);
+      color:#fff;
+      font-family:"Montserrat",sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      scroll-behavior:smooth;
+      line-height:1.45;
+      font-size:16px;
+    }
 
-/* Базові стилі */
-body{
-  background: var(--dark);
-  color: var(--light);
-  font-family: "Montserrat", sans-serif;
-  scroll-behavior: smooth;
-}
+    .container{max-width:1140px}
+    .section-title{font-weight:700;font-size:1.1rem;color:var(--secondary);margin-bottom:.4rem}
+    .lead{color:var(--muted)}
+    .dark-card{background:var(--card-bg) !important;border:1px solid #333 !important;color:#fff}
+    .btn-order{background:var(--primary);color:#fff;border:none;border-radius:50px;padding:.6rem 1.2rem;font-weight:600}
+    .btn-order:hover{transform:scale(1.03);box-shadow:0 0 14px var(--primary)}
+    .rounded-pill{border-radius:50px}
 
-/* Стилі для карточок меню */
-#menu .card {
-    background-color: #1a1a1a !important;
-    border: 1px solid #333 !important;
-}
+    .navbar{background: rgba(0,0,0,0.85) !important;backdrop-filter: blur(6px)}
+    .navbar-brand{color:var(--secondary) !important;font-family:'Dancing Script',cursive;font-size:1.7rem}
+    .nav-link{color:#fff !important;font-weight:600;transition:.2s}
+    .nav-link:hover{color:var(--secondary) !important;text-shadow:0 0 8px var(--secondary)}
 
-#menu .card-body,
-#menu .card-title,
-#menu .card-text,
-#menu .price-tag,
-#menu .text-muted {
-    color: white !important;
-}
+    .hero{min-height:100vh;display:flex;align-items:center;background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('foto/херофон.jpg');background-size:cover;background-position:center;color:#fff;padding-top:72px}
+    .title{font-family:'Dancing Script',cursive;font-size:clamp(2rem,4vw,4rem);font-weight:700;text-shadow:0 6px 18px rgba(0,0,0,0.6)}
 
-#menu .card-text,
-#menu .text-muted {
-    opacity: 0.9 !important;
-}
+    .card{background:#0b0b0b !important;border:none;border-radius:14px;transition:.25s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 16px 28px rgba(0,0,0,0.45)}
+    .card img{object-fit:cover;height:200px;width:100%}
+    .price-tag{font-weight:700}
 
-#menu .btn-outline-dark {
-    border-color: var(--primary) !important;
-    color: var(--primary) !important;
-    background-color: transparent !important;
-}
+    .offer-card{background:#050505;border-radius:18px;transition:.25s;padding:1rem}
 
-#menu .btn-outline-dark:hover {
-    background-color: var(--primary) !important;
-    color: black !important;
-}
+    .accordion-button{background:#050505;color:#fff}
+    .accordion-button:not(.collapsed){background:var(--primary);color:#fff}
+    .accordion-body{background:#0f0f0f;color:#fff}
 
-/* Стилі для секції замовлення */
-#order,
-.ordering-section,
-.checkout-section {
-  background-color: var(--dark);
-  color: var(--light);
-}
+    #menu .card-body,#menu .card-title,#menu .card-text,#menu .price-tag{color:#fff}
+    #menu .card-text,#menu .text-muted{opacity:.9}
 
-#order .card,
-.ordering-section .card,
-.checkout-section .card {
-  background-color: #1a1a1a !important;
-  border: 1px solid #333 !important;
-  color: white !important;
-}
+    .form-control,.form-select{
+      background:var(--input-bg) !important;
+      border:1px solid #444 !important;
+      color:#fff !important;
+      border-radius:.5rem;
+    }
+    .form-control::placeholder{color:#aaa;opacity:1}
+    .form-control:focus{border-color:var(--primary);box-shadow:0 0 0 .2rem rgba(255,107,53,.16) !important}
 
-#order .card-body,
-.ordering-section .card-body,
-.checkout-section .card-body,
-#order .card-title,
-.ordering-section .card-title,
-.checkout-section .card-title,
-#order .card-text,
-.ordering-section .card-text,
-.checkout-section .card-text,
-#order .form-label,
-.ordering-section .form-label,
-.checkout-section .form-label,
-#order .form-control,
-.ordering-section .form-control,
-.checkout-section .form-control,
-#order .form-select,
-.ordering-section .form-select,
-.checkout-section .form-select,
-#order .price-tag,
-.ordering-section .price-tag,
-.checkout-section .price-tag,
-#order .text-muted,
-.ordering-section .text-muted,
-.checkout-section .text-muted {
-  color: white !important;
-  background-color: transparent !important;
-}
+    footer{background:#000;color:#ccc;padding-top:1.5rem}
 
-#order .form-control,
-#order .form-select,
-.ordering-section .form-control,
-.ordering-section .form-select,
-.checkout-section .form-control,
-.checkout-section .form-select {
-  background-color: #2a2a2a !important;
-  border: 1px solid #444 !important;
-  color: white !important;
-}
+    .back-to-top{position:fixed;right:20px;bottom:24px;background:var(--primary);color:#000;padding:.6rem;border-radius:50%;display:flex;align-items:center;justify-content:center;transform:translateY(120%);transition:.28s;z-index:999}
+    .back-to-top.show{transform:translateY(0)}
 
-#order .form-control::placeholder,
-.ordering-section .form-control::placeholder,
-.checkout-section .form-control::placeholder {
-  color: #aaa !important;
-  opacity: 1;
-}
+    .badge-cart{display:inline-block;background:var(--secondary);color:#000;border-radius:50%;padding:.15rem .55rem;font-weight:700;position:relative;top:-6px;left:-8px}
 
-#order .form-control:focus,
-#order .form-select:focus,
-.ordering-section .form-control:focus,
-.ordering-section .form-select:focus,
-.checkout-section .form-control:focus,
-.checkout-section .form-select:focus {
-  background-color: #2a2a2a !important;
-  border-color: var(--primary) !important;
-  color: white !important;
-  box-shadow: 0 0 0 0.2rem rgba(255, 107, 53, 0.25) !important;
-}
-
-#order .btn-outline-dark,
-.ordering-section .btn-outline-dark,
-.checkout-section .btn-outline-dark {
-  border-color: var(--primary) !important;
-  color: var(--primary) !important;
-}
-
-#order .btn-outline-dark:hover,
-.ordering-section .btn-outline-dark:hover,
-.checkout-section .btn-outline-dark:hover {
-  background-color: var(--primary) !important;
-  color: black !important;
-}
-
-/* Інші ваші стилі */
-.navbar{
-  background: rgba(0,0,0,0.85) !important;
-  backdrop-filter: blur(6px);
-}
-
-.navbar-brand{
-  color: var(--secondary) !important;
-  font-family: 'Dancing Script', cursive;
-  font-size: 1.8rem;
-}
-
-.nav-link{
-  color: #ffffff !important;
-  font-weight: 600;
-  transition: .25s;
-}
-
-.nav-link:hover{
-  color: var(--secondary) !important;
-  text-shadow: 0 0 8px var(--secondary);
-}
-
-.hero,
-.hero-section{
-  min-height: 100vh;
-  display:flex;
-  align-items:center;
-  background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('foto/херофон.jpg');
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  color:#fff;
-}
-
-.hero .title,
-.hero-section h1{
-  font-family:'Dancing Script', cursive;
-  font-size: clamp(2rem, 4vw, 4rem);
-  font-weight: 700;
-  text-shadow: 0 6px 18px rgba(0,0,0,0.6);
-}
-
-.btn,
-.btn-order{
-  background: var(--primary); 
-  color:#fff;
-  border:none;
-  border-radius:50px;
-  padding:.7rem 1.4rem;
-  font-weight:600;
-  transition:.3s;
-}
-
-.btn:hover,
-.btn-order:hover{
-  transform: scale(1.05);
-  box-shadow:0 0 14px var(--primary);
-}
-
-.btn-outline-light{
-  border-radius:50px;
-  border:2px solid #fff;
-  color:#fff;
-}
-.btn-outline-light:hover{
-  background:#fff;
-  color:#000;
-}
-
-.card{
-  background:#0b0b0b !important;
-  border:none;
-  border-radius:14px;
-  transition:.3s;
-}
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 16px 28px rgba(0,0,0,0.4);
-}
-.card img{
-  object-fit:cover;
-  height:200px;
-  width:100%;
-}
-
-.offer-card{
-  background:#050505;
-  border-radius:18px;
-  transition:.3s;
-}
-.offer-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 24px 40px rgba(0,0,0,0.5);
-}
-
-.accordion-button{
-  background:#050505;
-  color:#fff;
-}
-.accordion-button:not(.collapsed){
-  background:var(--primary);
-  color:#fff;
-}
-.accordion-body{
-  background:#0f0f0f;
-  color:#fff;
-}
-
-footer{
-  background:#000000;
-  color:#ccc;
-}
-</style>
+    @media (max-width: 767px){
+      .hero{padding-top:88px}
+      .card img{height:160px}
+      .btn-order{padding:.6rem .9rem}
+    }
+    @media (max-width: 480px){
+      .title{font-size:2.2rem}
+      .navbar-brand{font-size:1.5rem}
+    }
+  </style>
 </head>
 <body>
-
   <!-- NAVBAR -->
-  <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
+  <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm" aria-label="Головна навігація">
     <div class="container">
       <a class="navbar-brand" href="#">Shaurmishka</a>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse" aria-controls="navCollapse" aria-expanded="false">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse" aria-controls="navCollapse" aria-expanded="false" aria-label="Переключить навигацию">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -285,16 +114,16 @@ footer{
           <li class="nav-item mx-2"><a class="nav-link" href="#offers">Акції</a></li>
           <li class="nav-item mx-2"><a class="nav-link" href="#menu">Меню</a></li>
           <li class="nav-item mx-2"><a class="nav-link" href="#about">Про нас</a></li>
-          <li class="nav-item mx-2"><a class="nav-link" href="#book">Замовити</a></li>
+          <li class="nav-item mx-2"><a class="nav-link" href="#order">Замовити</a></li>
           <li class="nav-item mx-2"><a class="nav-link" href="#faq">FAQ</a></li>
           <li class="nav-item ms-3 position-relative">
-            <a class="nav-link d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#cartModal">
+            <a class="nav-link d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#cartModal" aria-label="Відкрити кошик">
               <i class="bi bi-cart3 fs-4" style="color:#fff"></i>
               <span id="cartCount" class="badge-cart">0</span>
             </a>
           </li>
           <li class="nav-item ms-3 d-none d-lg-block">
-            <a href="#book" class="btn btn-order">Замовити зараз</a>
+            <a href="#order" class="btn btn-order">Замовити зараз</a>
           </li>
         </ul>
       </div>
@@ -302,7 +131,7 @@ footer{
   </nav>
 
   <!-- HERO -->
-  <header id="home" class="hero">
+  <header id="home" class="hero" role="banner">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 text-lg-start text-center" data-aos="fade-right">
@@ -310,7 +139,7 @@ footer{
           <p class="lead my-3">Свіже м'ясо, ароматні спеції та авторські соуси за сімейним рецептом. Найсмачніша шаурма у Вінниці!</p>
           <div class="d-flex justify-content-center justify-content-lg-start gap-3">
             <a href="#menu" class="btn btn-order btn-lg">Переглянути меню</a>
-            <a href="#book" class="btn btn-outline-light btn-lg">Зробити замовлення</a>
+            <a href="#order" class="btn btn-outline-light btn-lg rounded-pill">Зробити замовлення</a>
           </div>
         </div>
       </div>
@@ -318,25 +147,25 @@ footer{
   </header>
 
   <!-- OFFERS -->
-  <section id="offers" class="py-5 bg-black">
+  <section id="offers" class="py-5 bg-black" aria-labelledby="offersTitle">
     <div class="container">
       <div class="text-center mb-5" data-aos="fade-up">
-        <div class="section-title">Спеціальні пропозиції</div>
-        <p class="text-secondary">Скористайтеся нашими акціями — вигідно та смачно</p>
+        <div id="offersTitle" class="section-title">Спеціальні пропозиції</div>
+        <p class="lead">Скористайтеся нашими акціями — вигідно та смачно</p>
       </div>
 
       <div class="row g-4">
         <div class="col-md-6" data-aos="fade-up" data-aos-delay="50">
-          <div class="d-flex align-items-center gap-4 p-4 offer-card bg-dark text-white">
+          <div class="d-flex align-items-center gap-4 p-4 offer-card dark-card text-white">
             <div class="flex-shrink-0">
               <div class="rounded-circle border border-3 border-warning overflow-hidden" style="width:130px;height:130px;">
-                <img src="foto/Куряча шаурма.jpg" class="w-100 h-100 object-fit-cover" alt="">
+                <img src="foto/Куряча шаурма.jpg" alt="Шаурма з куркою" loading="lazy" decoding="async" width="130" height="130" class="w-100 h-100 object-fit-cover">
               </div>
             </div>
             <div>
               <h4 class="mb-1">Шаурма з куркою</h4>
               <div class="d-flex align-items-center gap-3 mb-2">
-                <div class="display-6 cursive" style="font-family:'Dancing Script',cursive;color:var(--accent)">20% </div>
+                <div class="display-6 cursive" style="font-family:'Dancing Script',cursive;color:var(--secondary)">20% </div>
                 <div class="text-secondary">Знижка</div>
               </div>
               <p class="mb-2">Тільки цього тижня! Справжня вінницька шаурма з куркою зі знижкою 20%.</p>
@@ -346,16 +175,16 @@ footer{
         </div>
 
         <div class="col-md-6" data-aos="fade-up" data-aos-delay="150">
-          <div class="d-flex align-items-center gap-4 p-4 offer-card bg-dark text-white">
+          <div class="d-flex align-items-center gap-4 p-4 offer-card dark-card text-white">
             <div class="flex-shrink-0">
               <div class="rounded-circle border border-3 border-warning overflow-hidden" style="width:130px;height:130px;">
-                <img src="foto/Яловича (говядина).jpg" class="w-100 h-100 object-fit-cover" alt="">
+                <img src="foto/Яловича (говядина).jpg" alt="Шаурма з яловичиною" loading="lazy" decoding="async" width="130" height="130" class="w-100 h-100 object-fit-cover">
               </div>
             </div>
             <div>
               <h4 class="mb-1">Шаурма з Яловиченою</h4>
               <div class="d-flex align-items-center gap-3 mb-2">
-                <div class="display-6 cursive" style="font-family:'Dancing Script',cursive;color:var(--accent)">15% </div>
+                <div class="display-6 cursive" style="font-family:'Dancing Script',cursive;color:var(--secondary)">15% </div>
                 <div class="text-secondary">Знижка</div>
               </div>
               <p class="mb-2">Соковита шаурма з ніжною телятиною за спеціальною ціною.</p>
@@ -367,718 +196,709 @@ footer{
     </div>
   </section>
 
-<!-- MENU -->
-<section id="menu" class="py-5">
-  <div class="container">
-    <div class="text-center mb-5" data-aos="fade-up">
-      <div class="section-title">Наше Меню</div>
-      <p class="text-secondary">Більше 50 страв для будь-якого смаку</p>
-    </div>
+  <!-- MENU -->
+  <section id="menu" class="py-5" aria-labelledby="menuTitle">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <div id="menuTitle" class="section-title">Наше Меню</div>
+        <p class="lead">Більше 50 страв для будь-якого смаку</p>
+      </div>
 
-    <!-- Nav pills -->
-    <ul class="nav nav-pills justify-content-center mb-4" id="menuTabs" role="tablist" data-aos="fade-up" data-aos-delay="80">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active rounded-pill px-4" id="pills-shaurma-tab" data-bs-toggle="pill" data-bs-target="#pills-shaurma" type="button">Шаурма</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link rounded-pill px-4" id="pills-burgers-tab" data-bs-toggle="pill" data-bs-target="#pills-burgers" type="button">Бургери</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link rounded-pill px-4" id="pills-drinks-tab" data-bs-toggle="pill" data-bs-target="#pills-drinks" type="button">Напої</button>
-      </li>
-    </ul>
+      <!-- Nav pills -->
+      <ul class="nav nav-pills justify-content-center mb-4" id="menuTabs" role="tablist" data-aos="fade-up" data-aos-delay="80">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active rounded-pill px-4" id="pills-shaurma-tab" data-bs-toggle="pill" data-bs-target="#pills-shaurma" type="button">Шаурма</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link rounded-pill px-4" id="pills-burgers-tab" data-bs-toggle="pill" data-bs-target="#pills-burgers" type="button">Бургери</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link rounded-pill px-4" id="pills-drinks-tab" data-bs-toggle="pill" data-bs-target="#pills-drinks" type="button">Напої</button>
+        </li>
+      </ul>
 
-    <div class="tab-content" id="pills-tabContent">
-      <!-- Shaurma -->
-      <div class="tab-pane fade show active" id="pills-shaurma" role="tabpanel">
-        <div class="row g-4">
-          <!-- Шаурма 1-3 -->
-          <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
-            <div class="card">
-              <img src="foto/Куряча шаурма.jpg" class="card-img-top" alt="Куряча шаурма">
-              <div class="card-body text-center">
-                <h5 class="card-title">Куряча шаурма</h5>
-                <p class="card-text text-secondary">Найпопулярніша. Курятина маринується у спеціях (паприка, карі, часник, йогурт).</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">85 ₴</div>
-                  <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Куряча шаурма" data-price="85">Додати</button>
+      <div class="tab-content" id="pills-tabContent">
+        <!-- Shaurma -->
+        <div class="tab-pane fade show active" id="pills-shaurma" role="tabpanel">
+          <div class="row g-4">
+            <!-- Full list of 18+ shaurma items (copied from original) -->
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
+              <div class="card dark-card">
+                <img src="foto/Куряча шаурма.jpg" class="card-img-top" alt="Куряча шаурма" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Куряча шаурма</h5>
+                  <p class="card-text text-secondary">Найпопулярніша. Курятина маринується у спеціях (паприка, карі, часник, йогурт).</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">85 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Куряча шаурма" data-price="85">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
+              <div class="card dark-card">
+                <img src="foto/Свинина.jpg" class="card-img-top" alt="Свинина" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Свинина</h5>
+                  <p class="card-text text-secondary">Соковита, жирніша, часто з гірчицею або гострим соусом.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">120 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Шаурма з свинини" data-price="120">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
+              <div class="card dark-card">
+                <img src="foto/Яловича (говядина).jpg" class="card-img-top" alt="Яловича" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Яловича (говядина)</h5>
+                  <p class="card-text text-secondary">М'ясна і більш ситна, часто з цибулею та аджикою.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">150 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Шаурма з яловичини" data-price="150">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
+              <div class="card dark-card">
+                <img src="foto/Баранина.jpg" class="card-img-top" alt="Баранина" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Баранина</h5>
+                  <p class="card-text text-secondary">Класика близькосхідної кухні; ароматна, зі східними спеціями.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">160 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Шаурма з баранини" data-price="160">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
+              <div class="card dark-card">
+                <img src="foto/Індичка.jpg" class="card-img-top" alt="Індичка" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Індичка</h5>
+                  <p class="card-text text-secondary">Дієтичний варіант — ніжне м'ясо, легкий соус.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">130 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Шаурма з індички" data-price="130">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
+              <div class="card dark-card">
+                <img src="foto/Рибна.jpg" class="card-img-top" alt="Рибна" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Рибна</h5>
+                  <p class="card-text text-secondary">З лососем або тунцем, часто в лаваші з овочами та соусом тартар.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">170 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Рибна шаурма" data-price="170">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
+              <div class="card dark-card">
+                <img src="foto/Вегетаріанська Веганська.jpg" class="card-img-top" alt="Вегетаріанська" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Вегетаріанська / Веганська</h5>
+                  <p class="card-text text-secondary">Без м'яса — з фалафелем, тофу, хумусом або овочами-гриль.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">110 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Вегетаріанська шаурма" data-price="110">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
+              <div class="card dark-card">
+                <img src="foto/Класична шаурма в лаваші.jpg" class="card-img-top" alt="Класична в лаваші" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Класична шаурма в лаваші</h5>
+                  <p class="card-text text-secondary">Тонкий лаваш, обсмажується на грилі.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">95 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Шаурма в лаваші" data-price="95">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
+              <div class="card dark-card">
+                <img src="foto/Шаурма в булці  піті.jpg" class="card-img-top" alt="Шаурма в булці" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Шаурма в булці / піті</h5>
+                  <p class="card-text text-secondary">Як бургер або сендвіч, але з начинкою шаурми.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">100 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Шаурма в булці" data-price="100">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
+              <div class="card dark-card">
+                <img src="foto/Шаурма на тарілці.jpg" class="card-img-top" alt="Шаурма на тарілці" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Шаурма на тарілці</h5>
+                  <p class="card-text text-secondary">Без лаваша — м'ясо, овочі, картопля, соус (як страва в кафе).</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">140 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Шаурма на тарілці" data-price="140">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
+              <div class="card dark-card">
+                <img src="foto/Міні-шаурма (рол).jpg" class="card-img-top" alt="Міні-шаурма" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Міні-шаурма (рол)</h5>
+                  <p class="card-text text-secondary">Маленький формат для перекусу.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">60 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Міні-шаурма" data-price="60">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
+              <div class="card dark-card">
+                <img src="foto/Дабл  XXL.jpg" class="card-img-top" alt="Дабл шаурма" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Дабл / XXL</h5>
+                  <p class="card-text text-secondary">Подвійна порція м'яса або великий лаваш</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">180 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Дабл шаурма" data-price="180">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
+              <div class="card dark-card">
+                <img src="foto/Донер-кебаб (Туреччина).jpg" class="card-img-top" alt="Донер-кебаб" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Донер-кебаб (Туреччина)</h5>
+                  <p class="card-text text-secondary">Класика: яловичина або баранина, соус на йогурті.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">155 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Донер-кебаб" data-price="155">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
+              <div class="card dark-card">
+                <img src="foto/Гірос (Греція).jpg" class="card-img-top" alt="Гірос" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Гірос (Греція)</h5>
+                  <p class="card-text text-secondary">Подається в піті з тцатцикі (йогуртово-огірковий соус).</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">145 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Гірос" data-price="145">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
+              <div class="card dark-card">
+                <img src="foto/Шаурма ізраїльська.jpg" class="card-img-top" alt="Ізраїльська" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Шаурма ізраїльська</h5>
+                  <p class="card-text text-secondary">З фалафелем або куркою, хумусом, овочами.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">135 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Ізраїльська шаурма" data-price="135">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
+              <div class="card dark-card">
+                <img src="foto/Арабська шаурма.jpg" class="card-img-top" alt="Арабська" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Арабська шаурма</h5>
+                  <p class="card-text text-secondary">З соусом тахіні, солоними огірками, маринованими овочами.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">150 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Арабська шаурма" data-price="150">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
+              <div class="card dark-card">
+                <img src="foto/Гостра шаурма.jpg" class="card-img-top" alt="Гостра" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Гостра шаурма</h5>
+                  <p class="card-text text-secondary">Для любителів пекучого з чілі, аджикою, харісою.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">125 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Гостра шаурма" data-price="125">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
+              <div class="card dark-card">
+                <img src="foto/Десертна шаурма.jpg" class="card-img-top" alt="Десертна" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Десертна шаурма</h5>
+                  <p class="card-text text-secondary">Солодка: з бананом, шоколадом, кремом (як «лаваш-рулет»).</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">90 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Десертна шаурма" data-price="90">Додати</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
-            <div class="card">
-              <img src="foto/Свинина.jpg" class="card-img-top" alt="Свинина">
-              <div class="card-body text-center">
-                <h5 class="card-title">Свинина</h5>
-                <p class="card-text text-secondary">Соковита, жирніша, часто з гірчицею або гострим соусом.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">120 ₴</div>
-                  <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Шаурма з свинини" data-price="120">Додати</button>
+        <!-- Burgers tab -->
+        <div class="tab-pane fade" id="pills-burgers" role="tabpanel">
+          <div class="row g-4">
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
+              <div class="card dark-card">
+                <img src="foto/Класичний яловичий бургер.jpg" class="card-img-top" alt="Класичний бургер" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Класичний яловичий бургер</h5>
+                  <p class="card-text text-secondary">Соковита яловича котлета, сир, соус, салат, булочка з кунжутом.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">120 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Класичний яловичий бургер" data-price="120">Додати</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
-            <div class="card">
-              <img src="foto/Яловича (говядина).jpg" class="card-img-top" alt="Яловича">
-              <div class="card-body text-center">
-                <h5 class="card-title">Яловича (говядина)</h5>
-                <p class="card-text text-secondary">М'ясна і більш ситна, часто з цибулею та аджикою.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">150 ₴</div>
-                  <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Шаурма з яловичини" data-price="150">Додати</button>
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
+              <div class="card dark-card">
+                <img src="foto/Чізбургер.jpg" class="card-img-top" alt="Чізбургер" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Чізбургер</h5>
+                  <p class="card-text text-secondary">Те саме, але з розплавленим сиром (чеддер, гауда).</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">140 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Чізбургер" data-price="140">Додати</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Шаурма 4-6 -->
-          <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
-            <div class="card">
-              <img src="foto/Баранина.jpg" class="card-img-top" alt="Баранина">
-              <div class="card-body text-center">
-                <h5 class="card-title">Баранина</h5>
-                <p class="card-text text-secondary">Класика близькосхідної кухні; ароматна, зі східними спеціями.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">160 ₴</div>
-                  <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Шаурма з баранини" data-price="160">Додати</button>
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
+              <div class="card dark-card">
+                <img src="foto/Беконбургер.jpg" class="card-img-top" alt="Беконбургер" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Беконбургер</h5>
+                  <p class="card-text text-secondary">Додається хрусткий бекон.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">160 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Беконбургер" data-price="160">Додати</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
-            <div class="card">
-              <img src="foto/Індичка.jpg" class="card-img-top" alt="Індичка">
-              <div class="card-body text-center">
-                <h5 class="card-title">Індичка</h5>
-                <p class="card-text text-secondary">Дієтичний варіант — ніжне м'ясо, легкий соус.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">130 ₴</div>
-                  <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Шаурма з індички" data-price="130">Додати</button>
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
+              <div class="card dark-card">
+                <img src="foto/Курячий бургер.jpg" class="card-img-top" alt="Курячий бургер" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Курячий бургер</h5>
+                  <p class="card-text text-secondary">Куряча котлета або філе-гриль, часто з легким соусом.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">110 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Курячий бургер" data-price="110">Додати</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
-            <div class="card">
-              <img src="foto/Рибна.jpg" class="card-img-top" alt="Рибна">
-              <div class="card-body text-center">
-                <h5 class="card-title">Рибна</h5>
-                <p class="card-text text-secondary">З лососем або тунцем, часто в лаваші з овочами та соусом тартар.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">170 ₴</div>
-                  <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Рибна шаурма" data-price="170">Додати</button>
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
+              <div class="card dark-card">
+                <img src="foto/Бургер з індички.jpg" class="card-img-top" alt="Бургер з індички" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Бургер з індички</h5>
+                  <p class="card-text text-secondary">Дієтичний варіант, менше жиру, м'якший смак.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">130 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Бургер з індички" data-price="130">Додати</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Шаурма 7-9 -->
-          <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
-            <div class="card">
-              <img src="foto/Вегетаріанська Веганська.jpg" class="card-img-top" alt="Вегетаріанська">
-              <div class="card-body text-center">
-                <h5 class="card-title">Вегетаріанська / Веганська</h5>
-                <p class="card-text text-secondary">Без м'яса — з фалафелем, тофу, хумусом або овочами-гриль.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">110 ₴</div>
-                  <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Вегетаріанська шаурма" data-price="110">Додати</button>
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
+              <div class="card dark-card">
+                <img src="foto/Свининний бургер.jpg" class="card-img-top" alt="Свининний бургер" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Свининний бургер</h5>
+                  <p class="card-text text-secondary">Соковитий, ароматний, часто з барбекю-соусом.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">150 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Свининний бургер" data-price="150">Додати</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
-            <div class="card">
-              <img src="foto/Класична шаурма в лаваші.jpg" class="card-img-top" alt="Класична в лаваші">
-              <div class="card-body text-center">
-                <h5 class="card-title">Класична шаурма в лаваші</h5>
-                <p class="card-text text-secondary">Тонкий лаваш, обсмажується на грилі.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">95 ₴</div>
-                  <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Шаурма в лаваші" data-price="95">Додати</button>
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
+              <div class="card dark-card">
+                <img src="foto/Рибний бургер.jpg" class="card-img-top" alt="Рибний бургер" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Рибний бургер</h5>
+                  <p class="card-text text-secondary">З філе риби (лосось, тріска, тунець) і соусом тартар.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">145 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Рибний бургер" data-price="145">Додати</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
-            <div class="card">
-              <img src="foto/Шаурма в булці  піті.jpg" class="card-img-top" alt="Шаурма в булці">
-              <div class="card-body text-center">
-                <h5 class="card-title">Шаурма в булці / піті</h5>
-                <p class="card-text text-secondary">Як бургер або сендвіч, але з начинкою шаурми.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">100 ₴</div>
-                  <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Шаурма в булці" data-price="100">Додати</button>
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
+              <div class="card dark-card">
+                <img src="foto/Бургер з баранини.jpg" class="card-img-top" alt="Бургер з баранини" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Бургер з баранини</h5>
+                  <p class="card-text text-secondary">Пряний, ароматний, часто з соусом на йогурті.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">170 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Бургер з баранини" data-price="170">Додати</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Шаурма 10-12 -->
-          <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
-            <div class="card">
-              <img src="foto/Шаурма на тарілці.jpg" class="card-img-top" alt="Шаурма на тарілці">
-              <div class="card-body text-center">
-                <h5 class="card-title">Шаурма на тарілці</h5>
-                <p class="card-text text-secondary">Без лаваша — м'ясо, овочі, картопля, соус (як страва в кафе).</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">140 ₴</div>
-                  <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Шаурма на тарілці" data-price="140">Додати</button>
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
+              <div class="card dark-card">
+                <img src="foto/Креветковий бургер.jpg" class="card-img-top" alt="Креветковий бургер" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Креветковий бургер</h5>
+                  <p class="card-text text-secondary">Морепродукти, хрустка паніровка, лимонний соус.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">180 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Креветковий бургер" data-price="180">Додати</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
-            <div class="card">
-              <img src="foto/Міні-шаурма (рол).jpg" class="card-img-top" alt="Міні-шаурма">
-              <div class="card-body text-center">
-                <h5 class="card-title">Міні-шаурма (рол)</h5>
-                <p class="card-text text-secondary">Маленький формат для перекусу.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">60 ₴</div>
-                  <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Міні-шаурма" data-price="60">Додати</button>
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
+              <div class="card dark-card">
+                <img src="foto/Вегетаріанський бургер.jpg" class="card-img-top" alt="Вегетаріанський бургер" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Вегетаріанський бургер</h5>
+                  <p class="card-text text-secondary">Котлета з овочів, бобів, сої, грибів або нуту.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">125 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Вегетаріанський бургер" data-price="125">Додати</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
-            <div class="card">
-              <img src="foto/Дабл  XXL.jpg" class="card-img-top" alt="Дабл шаурма">
-              <div class="card-body text-center">
-                <h5 class="card-title">Дабл / XXL</h5>
-                <p class="card-text text-secondary">Подвійна порція м'яса або великий лаваш</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">180 ₴</div>
-                  <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Дабл шаурма" data-price="180">Додати</button>
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
+              <div class="card dark-card">
+                <img src="foto/Веганський бургер.jpg" class="card-img-top" alt="Веганський бургер" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Веганський бургер</h5>
+                  <p class="card-text text-secondary">Повністю без продуктів тваринного походження.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">135 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Веганський бургер" data-price="135">Додати</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Шаурма 13-15 -->
-          <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
-            <div class="card">
-              <img src="foto/Донер-кебаб (Туреччина).jpg" class="card-img-top" alt="Донер-кебаб">
-              <div class="card-body text-center">
-                <h5 class="card-title">Донер-кебаб (Туреччина)</h5>
-                <p class="card-text text-secondary">Класика: яловичина або баранина, соус на йогурті.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">155 ₴</div>
-                  <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Донер-кебаб" data-price="155">Додати</button>
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
+              <div class="card dark-card">
+                <img src="foto/Дабл-чізбургер.jpg" class="card-img-top" alt="Дабл чізбургер" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Дабл-чізбургер</h5>
+                  <p class="card-text text-secondary">Дві котлети і два скибки сиру.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">190 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Дабл-чізбургер" data-price="190">Додати</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
-            <div class="card">
-              <img src="foto/Гірос (Греція).jpg" class="card-img-top" alt="Гірос">
-              <div class="card-body text-center">
-                <h5 class="card-title">Гірос (Греція)</h5>
-                <p class="card-text text-secondary">Подається в піті з тцатцикі (йогуртово-огірковий соус).</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">145 ₴</div>
-                  <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Гірос" data-price="145">Додати</button>
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
+              <div class="card dark-card">
+                <img src="foto/BBQ Burger.jpg" class="card-img-top" alt="BBQ Burger" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">BBQ Burger</h5>
+                  <p class="card-text text-secondary">Соус барбекю, бекон, цибуля фрі.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">165 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="BBQ Burger" data-price="165">Додати</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
-            <div class="card">
-              <img src="foto/Шаурма ізраїльська.jpg" class="card-img-top" alt="Ізраїльська">
-              <div class="card-body text-center">
-                <h5 class="card-title">Шаурма ізраїльська</h5>
-                <p class="card-text text-secondary">З фалафелем або куркою, хумусом, овочами.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">135 ₴</div>
-                  <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Ізраїльська шаурма" data-price="135">Додати</button>
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
+              <div class="card dark-card">
+                <img src="foto/Spicy Burger.jpg" class="card-img-top" alt="Spicy Burger" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Spicy Burger</h5>
+                  <p class="card-text text-secondary">З гострим соусом, чілі або халапеньйо.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">155 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Spicy Burger" data-price="155">Додати</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Шаурма 16-18 -->
-          <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
-            <div class="card">
-              <img src="foto/Арабська шаурма.jpg" class="card-img-top" alt="Арабська">
-              <div class="card-body text-center">
-                <h5 class="card-title">Арабська шаурма</h5>
-                <p class="card-text text-secondary">З соусом тахіні, солоними огірками, маринованими овочами.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">150 ₴</div>
-                  <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Арабська шаурма" data-price="150">Додати</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
-            <div class="card">
-              <img src="foto/Гостра шаурма.jpg" class="card-img-top" alt="Гостра">
-              <div class="card-body text-center">
-                <h5 class="card-title">Гостра шаурма</h5>
-                <p class="card-text text-secondary">Для любителів пекучого з чілі, аджикою, харісою.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">125 ₴</div>
-                  <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Гостра шаурма" data-price="125">Додати</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
-            <div class="card">
-              <img src="foto/Десертна шаурма.jpg" class="card-img-top" alt="Десертна">
-              <div class="card-body text-center">
-                <h5 class="card-title">Десертна шаурма</h5>
-                <p class="card-text text-secondary">Солодка: з бананом, шоколадом, кремом (як «лаваш-рулет»).</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">90 ₴</div>
-                  <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Десертна шаурма" data-price="90">Додати</button>
+            <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
+              <div class="card dark-card">
+                <img src="foto/Mushroom Burger.jpg" class="card-img-top" alt="Mushroom Burger" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Mushroom Burger</h5>
+                  <p class="card-text text-secondary">Гриби, сир, карамелізована цибуля.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">160 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Mushroom Burger" data-price="160">Додати</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- Burgers -->
-<div class="tab-pane fade" id="pills-burgers" role="tabpanel">
-  <div class="row g-4">
-    <!-- Бургери 1-3 -->
-    <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
-      <div class="card">
-        <img src="foto/Класичний яловичий бургер.jpg" class="card-img-top" alt="Класичний бургер">
-        <div class="card-body text-center">
-          <h5 class="card-title">Класичний яловичий бургер</h5>
-          <p class="card-text text-secondary">Соковита яловича котлета, сир, соус, салат, булочка з кунжутом.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">120 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Класичний яловичий бургер" data-price="120">Додати</button>
+
+        <!-- Drinks tab -->
+        <div class="tab-pane fade" id="pills-drinks" role="tabpanel">
+          <div class="row g-4">
+            <div class="col-md-3 menu-item" data-aos="fade-up">
+              <div class="card dark-card">
+                <img src="foto/Кока-Кола 0.5л.webp" class="card-img-top" alt="Кока-Кола" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h6>Кока-Кола 0.5л</h6>
+                  <p class="text-secondary mb-2">Охолоджуючий напій</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">35 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Кока-Кола 0.5л" data-price="35">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3 menu-item" data-aos="fade-up">
+              <div class="card dark-card">
+                <img src="foto/фанта.jpg" class="card-img-top" alt="Фанта" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h6>Фанта 0.5л</h6>
+                  <p class="text-secondary mb-2">Освіжаючий цитрусовий напій</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">35 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Фанта 0.5л" data-price="35">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3 menu-item" data-aos="fade-up">
+              <div class="card dark-card">
+                <img src="foto/спрайт.webp" class="card-img-top" alt="Спрайт" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h6>Спрайт 0.5л</h6>
+                  <p class="text-secondary mb-2">Освіжаючий лимонно-лаймовий напій</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">35 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Спрайт 0.5л" data-price="35">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3 menu-item" data-aos="fade-up">
+              <div class="card dark-card">
+                <img src="foto/пепси.webp" class="card-img-top" alt="Пепсі" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h6>Пепсі 0.5л</h6>
+                  <p class="text-secondary mb-2">Класичний газований напій</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">35 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Пепсі 0.5л" data-price="35">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3 menu-item" data-aos="fade-up">
+              <div class="card dark-card">
+                <img src="foto/моршинська.jpg" class="card-img-top" alt="Моршинська" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h6>Вода Моршинська 0.5л</h6>
+                  <p class="text-secondary mb-2">Мінеральна вода без газу</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">25 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Вода Моршинська 0.5л" data-price="25">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3 menu-item" data-aos="fade-up">
+              <div class="card dark-card">
+                <img src="foto/Бонаква 0.5л.webp" class="card-img-top" alt="Бонаква" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h6>Бонаква 0.5л</h6>
+                  <p class="text-secondary mb-2">Мінеральна вода з газом</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">30 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Бонаква 0.5л" data-price="30">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3 menu-item" data-aos="fade-up">
+              <div class="card dark-card">
+                <img src="foto/Сік Rich 0.3л.jpg" class="card-img-top" alt="Сік" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h6>Сік Rich 0.3л</h6>
+                  <p class="text-secondary mb-2">Яблучний, апельсиновий, томатний</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">40 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Сік Rich 0.3л" data-price="40">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3 menu-item" data-aos="fade-up">
+              <div class="card dark-card">
+                <img src="foto/Домашній лимонад 0.4л.jpg" class="card-img-top" alt="Лимонад" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h6>Домашній лимонад 0.4л</h6>
+                  <p class="text-secondary mb-2">Свіжий лимон, м'ята, лайм</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">45 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Домашній лимонад 0.4л" data-price="45">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3 menu-item" data-aos="fade-up">
+              <div class="card dark-card">
+                <img src="foto/Кава американо.jpg" class="card-img-top" alt="Кава" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h6>Кава американо</h6>
+                  <p class="text-secondary mb-2">Свіжообсмажена кава</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">50 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Кава американо" data-price="50">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3 menu-item" data-aos="fade-up">
+              <div class="card dark-card">
+                <img src="foto/Капучино.jpg" class="card-img-top" alt="Капучино" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h6>Капучино</h6>
+                  <p class="text-secondary mb-2">З молоком та ніжною пінкою</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">60 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Капучино" data-price="60">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3 menu-item" data-aos="fade-up">
+              <div class="card dark-card">
+                <img src="foto/Лате.jpg" class="card-img-top" alt="Лате" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h6>Лате</h6>
+                  <p class="text-secondary mb-2">З молоком та сиропом на вибір</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">65 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Лате" data-price="65">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3 menu-item" data-aos="fade-up">
+              <div class="card dark-card">
+                <img src="foto/чай.webp" class="card-img-top" alt="Чай" loading="lazy" decoding="async">
+                <div class="card-body text-center">
+                  <h6>Чай трав'яний</h6>
+                  <p class="text-secondary mb-2">Ромашка, м'ята, імбир, шипшина</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="price-tag">35 ₴</div>
+                    <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Чай трав'яний" data-price="35">Додати</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- /.tab-content -->
+    </div> <!-- /.container -->
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-5 bg-dark text-white mt-5 mb-5">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-md-6" data-aos="fade-right">
+          <img src="https://images.unsplash.com/photo-1551782450-17144efb9c50?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Про Shaurmishka" class="img-fluid rounded-4 shadow" loading="lazy" decoding="async">
+        </div>
+        <div class="col-md-6" data-aos="fade-left">
+          <div class="section-title mb-3">Про Shaurmishka</div>
+          <p class="lead">Ласкаво просимо до "Shaurmishka" — місця, де народжуються легенди смаку! Ми створили не просто заклад, а справжній храм шаурми, де кожна порція — це шедевр.</p>
+          <p>У "Shaurmishka" ми поєднуємо кращі традиції східної кухні з сучасними європейськими тенденціями. Наша філософія проста: лише свіжі продукти, авторські рецепти та любов до справи. Ми маринуємо м'ясо 12 годин у фірмових спеціях, випікаємо лаваш щодня та готуємо соуси за власними секретними рецептами.</p>
+          <p>Наша команда — це сімейний колектив ентузіастів, які вірять, що справжня шаурма може зробити день яскравішим. Завітайте до нас та відчуйте магію смаку!</p>
+          <div class="mt-3">
+            <a href="#order" class="btn btn-order me-2">Замовити зараз</a>
+            <a href="#menu" class="btn btn-outline-light">Переглянути меню</a>
           </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
-      <div class="card">
-        <img src="foto/Чізбургер.jpg" class="card-img-top" alt="Чізбургер">
-        <div class="card-body text-center">
-          <h5 class="card-title">Чізбургер</h5>
-          <p class="card-text text-secondary">Те саме, але з розплавленим сиром (чеддер, гауда).</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">140 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Чізбургер" data-price="140">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
-      <div class="card">
-        <img src="foto/Беконбургер.jpg" class="card-img-top" alt="Беконбургер">
-        <div class="card-body text-center">
-          <h5 class="card-title">Беконбургер</h5>
-          <p class="card-text text-secondary">Додається хрусткий бекон.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">160 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Беконбургер" data-price="160">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Бургери 4-6 -->
-    <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
-      <div class="card">
-        <img src="foto/Курячий бургер.jpg" class="card-img-top" alt="Курячий бургер">
-        <div class="card-body text-center">
-          <h5 class="card-title">Курячий бургер</h5>
-          <p class="card-text text-secondary">Куряча котлета або філе-гриль, часто з легким соусом.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">110 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Курячий бургер" data-price="110">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
-      <div class="card">
-        <img src="foto/Бургер з індички.jpg" class="card-img-top" alt="Бургер з індички">
-        <div class="card-body text-center">
-          <h5 class="card-title">Бургер з індички</h5>
-          <p class="card-text text-secondary">Дієтичний варіант, менше жиру, м'якший смак.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">130 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Бургер з індички" data-price="130">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
-      <div class="card">
-        <img src="foto/Свининний бургер.jpg" class="card-img-top" alt="Свининний бургер">
-        <div class="card-body text-center">
-          <h5 class="card-title">Свининний бургер</h5>
-          <p class="card-text text-secondary">Соковитий, ароматний, часто з барбекю-соусом.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">150 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Свининний бургер" data-price="150">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Бургери 7-9 -->
-    <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
-      <div class="card">
-        <img src="foto/Рибний бургер.jpg" class="card-img-top" alt="Рибний бургер">
-        <div class="card-body text-center">
-          <h5 class="card-title">Рибний бургер</h5>
-          <p class="card-text text-secondary">З філе риби (лосось, тріска, тунець) і соусом тартар.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">145 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Рибний бургер" data-price="145">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
-      <div class="card">
-        <img src="foto/Бургер з баранини.jpg" class="card-img-top" alt="Бургер з баранини">
-        <div class="card-body text-center">
-          <h5 class="card-title">Бургер з баранини</h5>
-          <p class="card-text text-secondary">Пряний, ароматний, часто з соусом на йогурті.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">170 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Бургер з баранини" data-price="170">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
-      <div class="card">
-        <img src="foto/Креветковий бургер.jpg" alt="Креветковий бургер">
-        <div class="card-body text-center">
-          <h5 class="card-title">Креветковий бургер</h5>
-          <p class="card-text text-secondary">Морепродукти, хрустка паніровка, лимонний соус.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">180 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Креветковий бургер" data-price="180">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Бургери 10-12 -->
-    <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
-      <div class="card">
-        <img src="foto/Вегетаріанський бургер.jpg" class="card-img-top" alt="Вегетаріанський бургер">
-        <div class="card-body text-center">
-          <h5 class="card-title">Вегетаріанський бургер</h5>
-          <p class="card-text text-secondary">Котлета з овочів, бобів, сої, грибів або нуту.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">125 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Вегетаріанський бургер" data-price="125">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
-      <div class="card">
-        <img src="foto/Веганський бургер.jpg" class="card-img-top" alt="Веганський бургер">
-        <div class="card-body text-center">
-          <h5 class="card-title">Веганський бургер</h5>
-          <p class="card-text text-secondary">Повністю без продуктів тваринного походження.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">135 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Веганський бургер" data-price="135">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
-      <div class="card">
-        <img src="foto/Дабл-чізбургер.jpg" class="card-img-top" alt="Дабл чізбургер">
-        <div class="card-body text-center">
-          <h5 class="card-title">Дабл-чізбургер</h5>
-          <p class="card-text text-secondary">Дві котлети і два скибки сиру.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">190 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Дабл-чізбургер" data-price="190">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Бургери 13-15 -->
-    <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="40">
-      <div class="card">
-        <img src="foto/BBQ Burger.jpg" class="card-img-top" alt="BBQ Burger">
-        <div class="card-body text-center">
-          <h5 class="card-title">BBQ Burger</h5>
-          <p class="card-text text-secondary">Соус барбекю, бекон, цибуля фрі.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">165 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="BBQ Burger" data-price="165">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="90">
-      <div class="card">
-        <img src="foto/Spicy Burger.jpg" class="card-img-top" alt="Spicy Burger">
-        <div class="card-body text-center">
-          <h5 class="card-title">Spicy Burger</h5>
-          <p class="card-text text-secondary">З гострим соусом, чілі або халапеньйо.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">155 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Spicy Burger" data-price="155">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 menu-item" data-aos="zoom-in" data-aos-delay="140">
-      <div class="card">
-        <img src="foto/Mushroom Burger.jpg" class="card-img-top" alt="Mushroom Burger">
-        <div class="card-body text-center">
-          <h5 class="card-title">Mushroom Burger</h5>
-          <p class="card-text text-secondary">Гриби, сир, карамелізована цибуля.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">160 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Mushroom Burger" data-price="160">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Drinks -->
-<div class="tab-pane fade" id="pills-drinks" role="tabpanel">
-  <div class="row g-4">
-    <!-- Напої 1-4 -->
-    <div class="col-md-3 menu-item" data-aos="fade-up">
-      <div class="card">
-        <img src="foto/Кока-Кола 0.5л.webp" class="card-img-top" alt="Кока-Кола">
-        <div class="card-body text-center">
-          <h6>Кока-Кола 0.5л</h6>
-          <p class="text-secondary mb-2">Охолоджуючий напій</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">35 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Кока-Кола 0.5л" data-price="35">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 menu-item" data-aos="fade-up">
-      <div class="card">
-        <img src="foto/фанта.jpg" class="card-img-top" alt="Фанта">
-        <div class="card-body text-center">
-          <h6>Фанта 0.5л</h6>
-          <p class="text-secondary mb-2">Освіжаючий цитрусовий напій</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">35 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Фанта 0.5л" data-price="35">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 menu-item" data-aos="fade-up">
-      <div class="card">
-        <img src="foto/спрайт.webp" class="card-img-top" alt="Спрайт">
-        <div class="card-body text-center">
-          <h6>Спрайт 0.5л</h6>
-          <p class="text-secondary mb-2">Освіжаючий лимонно-лаймовий напій</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">35 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Спрайт 0.5л" data-price="35">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 menu-item" data-aos="fade-up">
-      <div class="card">
-        <img src="foto/пепси.webp" class="card-img-top" alt="Пепсі">
-        <div class="card-body text-center">
-          <h6>Пепсі 0.5л</h6>
-          <p class="text-secondary mb-2">Класичний газований напій</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">35 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Пепсі 0.5л" data-price="35">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Напої 5-8 -->
-    <div class="col-md-3 menu-item" data-aos="fade-up">
-      <div class="card">
-        <img src="foto/моршинська.jpg" class="card-img-top" alt="Моршинська">
-        <div class="card-body text-center">
-          <h6>Вода Моршинська 0.5л</h6>
-          <p class="text-secondary mb-2">Мінеральна вода без газу</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">25 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Вода Моршинська 0.5л" data-price="25">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 menu-item" data-aos="fade-up">
-      <div class="card">
-        <img src="foto/Бонаква 0.5л.webp" class="card-img-top" alt="Бонаква">
-        <div class="card-body text-center">
-          <h6>Бонаква 0.5л</h6>
-          <p class="text-secondary mb-2">Мінеральна вода з газом</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">30 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Бонаква 0.5л" data-price="30">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 menu-item" data-aos="fade-up">
-      <div class="card">
-        <img src="foto/Сік Rich 0.3л.jpg" class="card-img-top" alt="Сік">
-        <div class="card-body text-center">
-          <h6>Сік Rich 0.3л</h6>
-          <p class="text-secondary mb-2">Яблучний, апельсиновий, томатний</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">40 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Сік Rich 0.3л" data-price="40">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 menu-item" data-aos="fade-up">
-      <div class="card">
-        <img src="foto/Домашній лимонад 0.4л.jpg" class="card-img-top" alt="Лимонад">
-        <div class="card-body text-center">
-          <h6>Домашній лимонад 0.4л</h6>
-          <p class="text-secondary mb-2">Свіжий лимон, м'ята, лайм</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">45 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Домашній лимонад 0.4л" data-price="45">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Напої 9-12 -->
-    <div class="col-md-3 menu-item" data-aos="fade-up">
-      <div class="card">
-        <img src="foto/Кава американо.jpg" class="card-img-top" alt="Кава">
-        <div class="card-body text-center">
-          <h6>Кава американо</h6>
-          <p class="text-secondary mb-2">Свіжообсмажена кава</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">50 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Кава американо" data-price="50">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 menu-item" data-aos="fade-up">
-      <div class="card">
-        <img src="foto/Капучино.jpg" class="card-img-top" alt="Капучино">
-        <div class="card-body text-center">
-          <h6>Капучино</h6>
-          <p class="text-secondary mb-2">З молоком та ніжною пінкою</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">60 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Капучино" data-price="60">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 menu-item" data-aos="fade-up">
-      <div class="card">
-        <img src="foto/Лате.jpg" class="card-img-top" alt="Лате">
-        <div class="card-body text-center">
-          <h6>Лате</h6>
-          <p class="text-secondary mb-2">З молоком та сиропом на вибір</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">65 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Лате" data-price="65">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 menu-item" data-aos="fade-up">
-      <div class="card">
-        <img src="foto/чай.webp" class="card-img-top" alt="Чай">
-        <div class="card-body text-center">
-          <h6>Чай трав'яний</h6>
-          <p class="text-secondary mb-2">Ромашка, м'ята, імбир, шипшина</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="price-tag">35 ₴</div>
-            <button class="btn btn-sm btn-outline-dark add-to-cart" data-name="Чай трав'яний" data-price="35">Додати</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ABOUT -->
-<section id="about" class="py-5 bg-dark text-white mt-5 mb-5">
-  <div class="container">
-    <div class="row align-items-center g-4">
-      <div class="col-md-6" data-aos="fade-right">
-        <img src="https://images.unsplash.com/photo-1551782450-17144efb9c50?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Про Shaurmishka" class="img-fluid rounded-4 shadow">
-      </div>
-      <div class="col-md-6" data-aos="fade-left">
-        <div class="section-title mb-3">Про Shaurmishka</div>
-        <p class="lead">Ласкаво просимо до "Shaurmishka" — місця, де народжуються легенди смаку! Ми створили не просто заклад, а справжній храм шаурми, де кожна порція — це шедевр.</p>
-        <p>У "Shaurmishka" ми поєднуємо кращі традиції східної кухні з сучасними європейськими тенденціями. Наша філософія проста: лише свіжі продукти, авторські рецепти та любов до справи. Ми маринуємо м'ясо 12 годин у фірмових спеціях, випікаємо лаваш щодня та готуємо соуси за власними секретними рецептами.</p>
-        <p>Наша команда — це сімейний колектив ентузіастів, які вірять, що справжня шаурма може зробити день яскравішим. Завітайте до нас та відчуйте магію смаку!</p>
-        <div class="mt-3">
-          <a href="#order" class="btn btn-order me-2">Замовити зараз</a>
-          <a href="#menu" class="btn btn-outline-light">Переглянути меню</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BOOK / ORDER -->
-<section id="order" class="ordering-section py-5 mt-5 mb-5">
+  <!-- ORDER -->
+  <section id="order" class="ordering-section py-5 mt-5 mb-5">
     <div class="container">
       <div class="text-center mb-4" data-aos="fade-up">
         <div class="section-title">Зробити замовлення</div>
-        <p class="text-secondary">Замовте доставку або заберіть самі — ми завжди раді вас бачити!</p>
+        <p class="lead">Замовте доставку або заберіть самі — ми завжди раді вас бачити!</p>
       </div>
 
       <div class="row g-4">
         <div class="col-lg-6" data-aos="fade-right">
-          <div class="card shadow-sm p-4">
+          <div class="card shadow-sm p-4 dark-card">
             <h5 class="mb-3">Дані для замовлення</h5>
             <form id="orderForm">
               <div class="mb-3">
@@ -1107,8 +927,8 @@ footer{
         </div>
 
         <div class="col-lg-6" data-aos="fade-left">
-          <div class="card shadow-sm p-0 overflow-hidden">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20249.938140288676!2d28.450162182450658!3d49.23065468070382!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472d5b00184a09d7%3A0xe5530db89ae16a7a!2sShaurmishka!5e0!3m2!1sru!2sua!4v1762889727056!5m2!1sru!2sua" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="card shadow-sm p-0 overflow-hidden dark-card">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20249.938140288676!2d28.450162182450658!3d49.23065468070382!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472d5b00184a09d7%3A0xe5530db89ae16a7a!2sShaurmishka!5e0!3m2!1sru!2sua!4v1762889727056!5m2!1sru!2sua" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade"></iframe>
             <div class="p-4">
               <h6 class="mb-2">Наше розташування</h6>
               <p class="mb-1"><i class="bi bi-geo-alt-fill me-2 text-primary"></i> Вінниця, вулиця Соборна, 80</p>
@@ -1121,12 +941,12 @@ footer{
     </div>
   </section>
 
-<!-- FAQ -->
-<section id="faq" class="py-5 bg-dark text-white mt-5 mb-5">
+  <!-- FAQ -->
+  <section id="faq" class="py-5 bg-dark text-white mt-5 mb-5">
     <div class="container">
       <div class="text-center mb-4" data-aos="fade-up">
         <div class="section-title">Часті питання</div>
-        <p class="text-secondary">Відповіді на найпопулярніші запитання</p>
+        <p class="lead">Відповіді на найпопулярніші запитання</p>
       </div>
 
       <div class="row justify-content-center">
@@ -1164,43 +984,43 @@ footer{
     </div>
   </section>
 
-<!-- FOOTER -->
-<footer class="bg-dark text-white py-4 mt-5">
-  <div class="container">
-    <div class="row gy-4">
-      <div class="col-md-4">
-        <h5 class="mb-3">Контакти</h5>
-        <p class="mb-1"><i class="bi bi-geo-alt-fill me-2"></i> Вінниця, вулиця Соборна, 80</p>
-        <p class="mb-1"><i class="bi bi-telephone-fill me-2"></i>+38 (093) 191-35-85</p>
-        <p class="mb-1"><i class="bi bi-envelope-fill me-2"></i>info@vinnyska-shaurma.com</p>
-      </div>
-      <div class="col-md-4 text-center">
-        <h3 class="mb-2" style="font-family:'Dancing Script',cursive;color:#ffbe33;">Shaurmishka</h3>
-        <p class="small">Справжній смак Вінниці у кожній шаурмі. © 2025</p>
-        <div class="d-flex justify-content-center gap-3">
-          <a class="text-decoration-none text-light" href="https://l.instagram.com/?u=https%3A%2F%2Fwww.tiktok.com%2F%40shaurmishka_vn%3F_t%3D8s589YwPsow%26_r%3D1%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGntAP2JFbbIRDeSY8DesK3s_2iu1kHbgRuX7wxc26zpUlvoxXpXsP4SMkTQKw_aem_qNGAKUf8N-ULdxB9WZK5RA&e=AT2pAInTbynCqfK7YYFAxmhBOb2CcNg_ic_hgjdr3FymTO4C7visJd4T7E5pOiCRwkSy71wgOfWahCknRXkpabL_hzgL-LUPqUjv3Tz1zw"><i class="bi bi-Tiktok fs-4"></i></a>
-          <a class="text-decoration-none text-light" href="https://www.instagram.com/shaur_mishka_vn?igsh=d3F4enFkdGkza3dx"><i class="bi bi-instagram fs-4"></i></a>
-          <a class="text-decoration-none text-light" href="https://l.instagram.com/?u=https%3A%2F%2Ft.me%2Fshaurmishkavn%3Ffbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnvAfHpDA-TFj8CXYWy3xSWTIwB_y8OTHWjoy5rvZL7BuYwPkEkV44tuqR87Q_aem_FINvaUEWG3pz6hxgeZJj7Q&e=AT2tF6t8wem8kE80ZW9l8BuC2GMnSYAOy_xEKvfgvsUgiqDHUK8bNev5-vDC8qn56J81rmXsZlRLL93j1Ad2wcrejhT0KKwBcxMbhbRzsA"><i class="bi bi-telegram fs-4"></i></a>
+  <!-- FOOTER -->
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-md-4">
+          <h5 class="mb-3">Контакти</h5>
+          <p class="mb-1"><i class="bi bi-geo-alt-fill me-2"></i> Вінниця, вулиця Соборна, 80</p>
+          <p class="mb-1"><i class="bi bi-telephone-fill me-2"></i>+38 (093) 191-35-85</p>
+          <p class="mb-1"><i class="bi bi-envelope-fill me-2"></i>info@vinnyska-shaurma.com</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <h3 class="mb-2" style="font-family:'Dancing Script',cursive;color:#ffbe33;">Shaurmishka</h3>
+          <p class="small">Справжній смак Вінниці у кожній шаурмі. © 2025</p>
+          <div class="d-flex justify-content-center gap-3">
+            <a class="text-decoration-none text-light" href="#"><i class="bi bi-Tiktok fs-4"></i></a>
+            <a class="text-decoration-none text-light" href="#"><i class="bi bi-instagram fs-4"></i></a>
+            <a class="text-decoration-none text-light" href="#"><i class="bi bi-telegram fs-4"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4 text-md-end">
+          <h5 class="mb-3">Години роботи</h5>
+          <p class="mb-0">Пн–Чт: 09:00–22:00</p>
+          <p class="mb-0">Пт–Сб: 09:00–22:00</p>
+          <p class="mb-0">Нд: 09:00–22:00</p>
         </div>
       </div>
-      <div class="col-md-4 text-md-end">
-        <h5 class="mb-3">Години роботи</h5>
-        <p class="mb-0">Пн–Чт: 09:00–22:00</p>
-        <p class="mb-0">Пт–Сб: 09:00–22:00</p>
-        <p class="mb-0">Нд: 09:00–22:00</p>
-      </div>
+      <div class="text-center mt-4 small text-secondary">Зроблено з ❤️ у Вінниці</div>
     </div>
-    <div class="text-center mt-4 small text-secondary">Зроблено з ❤️ у Вінниці</div>
-  </div>
-</footer>
+  </footer>
 
   <!-- CART MODAL -->
   <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content">
+      <div class="modal-content dark-card">
         <div class="modal-header border-0">
           <h5 class="modal-title">Ваше замовлення</h5>
-          <button class="btn-close" data-bs-dismiss="modal"></button>
+          <button class="btn-close" data-bs-dismiss="modal" aria-label="Закрити"></button>
         </div>
         <div class="modal-body">
           <div id="cartItems" class="list-group mb-3">
@@ -1223,39 +1043,42 @@ footer{
   <a class="back-to-top" id="backToTop" href="#home" aria-label="Back to top"><i class="bi bi-chevron-up"></i></a>
 
   <!-- SCRIPTS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <!-- Load vendor scripts with defer so they don't block initial render -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
 
   <script>
-    // Init AOS
-    AOS.init({ duration: 700, once: true, offset: 80 });
+  // Inline main script (runs after HTML parse; external libs loaded with defer but we can safely init AOS when available)
+  (function(){
+    // AOS safe init when script loaded
+    function safeAOSInit(){ if(window.AOS) AOS.init({ duration:700, once:true, offset:80 }); }
+    if(document.readyState === 'complete' || document.readyState === 'interactive'){
+      setTimeout(safeAOSInit, 50);
+    } else {
+      document.addEventListener('DOMContentLoaded', safeAOSInit);
+    }
 
-    // Navbar shrink on scroll
+    // Elements
     const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 60) nav.classList.add('shadow-lg');
-      else nav.classList.remove('shadow-lg');
-    });
-
-    // Back to top visibility
     const back = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 500) back.classList.add('show'); else back.classList.remove('show');
-    });
-
-    // Simple cart logic (local, no server)
-    let cart = [];
     const cartCountEl = document.getElementById('cartCount');
     const cartItemsEl = document.getElementById('cartItems');
     const cartTotalEl = document.getElementById('cartTotal');
     const cartEmptyEl = document.getElementById('cartEmpty');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    const orderForm = document.getElementById('orderForm');
+
+    // Cart state (persisted)
+    let cart = JSON.parse(localStorage.getItem('shaurmishka_cart') || '[]');
+
+    function saveCart(){ localStorage.setItem('shaurmishka_cart', JSON.stringify(cart)); }
 
     function updateCartUI(){
       const total = cart.reduce((s,i)=> s + i.price * i.qty, 0);
       cartTotalEl.textContent = total + ' ₴';
       cartCountEl.textContent = cart.reduce((s,i)=> s + i.qty, 0);
       cartItemsEl.innerHTML = '';
-      if(cart.length===0){
+      if(cart.length === 0){
         cartEmptyEl.style.display = 'block';
       } else {
         cartEmptyEl.style.display = 'none';
@@ -1264,13 +1087,13 @@ footer{
           node.className = 'list-group-item d-flex justify-content-between align-items-center';
           node.innerHTML = `
             <div>
-              <div class="fw-bold">${item.name}</div>
+              <div class="fw-bold">${escapeHtml(item.name)}</div>
               <small class="text-secondary">${item.price} ₴ • x${item.qty}</small>
             </div>
             <div class="d-flex gap-2 align-items-center">
-              <button class="btn btn-sm btn-outline-secondary" data-action="dec" data-idx="${idx}">−</button>
-              <button class="btn btn-sm btn-outline-secondary" data-action="inc" data-idx="${idx}">+</button>
-              <button class="btn btn-sm btn-link text-danger" data-action="rm" data-idx="${idx}">Видалити</button>
+              <button class="btn btn-sm btn-outline-secondary" data-action="dec" data-idx="${idx}" aria-label="Зменшити">−</button>
+              <button class="btn btn-sm btn-outline-secondary" data-action="inc" data-idx="${idx}" aria-label="Збільшити">+</button>
+              <button class="btn btn-sm btn-link text-danger" data-action="rm" data-idx="${idx}" aria-label="Видалити">Видалити</button>
             </div>
           `;
           cartItemsEl.appendChild(node);
@@ -1278,80 +1101,124 @@ footer{
       }
     }
 
-    // Add to cart buttons
-    document.querySelectorAll('.add-to-cart').forEach(btn=>{
-      btn.addEventListener('click', () => {
-        const name = btn.dataset.name;
-        const price = Number(btn.dataset.price);
-        const found = cart.find(i=> i.name === name);
-        if(found) found.qty += 1; else cart.push({ name, price, qty:1 });
-        updateCartUI();
-        // show modal briefly
-        const notif = document.createElement('div');
-        notif.className = 'position-fixed end-0 me-3 mt-5 p-3 rounded-3 text-white';
-        notif.style.background = 'linear-gradient(90deg,var(--primary),var(--secondary))';
-        notif.style.zIndex = 1060;
-        notif.textContent = `${name} додано в кошик`;
-        document.body.appendChild(notif);
-        setTimeout(()=> notif.remove(), 1600);
-      });
-    });
+    // Escape HTML to avoid injection if names ever come from user
+    function escapeHtml(str){
+      return String(str).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; });
+    }
 
-    // Cart item buttons (delegation)
-    cartItemsEl.addEventListener('click', (e)=>{
-      const action = e.target.getAttribute('data-action');
-      const idx = e.target.getAttribute('data-idx');
-      if(!action) return;
-      if(action === 'inc') { cart[idx].qty++; updateCartUI(); }
-      if(action === 'dec') { cart[idx].qty--; if(cart[idx].qty<=0) cart.splice(idx,1); updateCartUI(); }
-      if(action === 'rm') { cart.splice(idx,1); updateCartUI(); }
-    });
-
-    // Checkout button (simple)
-    document.getElementById('checkoutBtn').addEventListener('click', ()=>{
-      if(cart.length===0){ alert('Кошик порожній'); return; }
-      // Простейшая имитация: очищаем корзину и показываем благодарность
-      cart = [];
+    // Add item to cart (merges by name)
+    function addToCart(name, price){
+      const idx = cart.findIndex(i => i.name === name && i.price == price);
+      if(idx >= 0){
+        cart[idx].qty++;
+      } else {
+        cart.push({ name, price: Number(price), qty: 1 });
+      }
+      saveCart();
       updateCartUI();
-      const bsModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('cartModal'));
-      bsModal.hide();
-      const thanks = new bootstrap.Modal(document.createElement('div'), {backdrop:true});
-      // Создадим простое модальное окно благодарности
-      const tpl = document.createElement('div');
-      tpl.className = 'modal fade';
-      tpl.innerHTML = `
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-body text-center p-4">
-              <i class="bi bi-check-circle-fill text-success fs-1"></i>
-              <h5 class="mt-3">Замовлення успішно оформлено!</h5>
-              <p class="mb-3">Дякуємо! Наш менеджер зв'яжеться з вами найближчим часом.</p>
-              <button class="btn btn-order" data-bs-dismiss="modal">Готово</button>
-            </div>
-          </div>
-        </div>`;
-      document.body.appendChild(tpl);
-      const modal = new bootstrap.Modal(tpl);
-      modal.show();
-      tpl.addEventListener('hidden.bs.modal', ()=> tpl.remove());
+    }
+
+    // Delegated event for add-to-cart buttons
+    document.addEventListener('click', function(e){
+      const addBtn = e.target.closest('.add-to-cart');
+      if(addBtn){
+        const name = addBtn.dataset.name;
+        const price = Number(addBtn.dataset.price);
+        addToCart(name, price);
+        // visual feedback
+        addBtn.classList.add('active');
+        setTimeout(()=> addBtn.classList.remove('active'), 250);
+        return;
+      }
+
+      // Cart item controls (delegation)
+      const actionBtn = e.target.closest('[data-action]');
+      if(actionBtn){
+        const action = actionBtn.dataset.action;
+        const idx = Number(actionBtn.dataset.idx);
+        if(!isNaN(idx) && cart[idx]){
+          if(action === 'inc') cart[idx].qty++;
+          if(action === 'dec'){ cart[idx].qty = Math.max(1, cart[idx].qty-1); }
+          if(action === 'rm') cart.splice(idx,1);
+          saveCart();
+          updateCartUI();
+        }
+        return;
+      }
     });
 
-    // Order form submit (just demo)
-    document.getElementById('orderForm').addEventListener('submit', (e)=>{
-      e.preventDefault();
-      // basic validation
-      if(!document.getElementById('privacyCheck').checked){ alert('Погодьтесь з умовами'); return; }
-      // show loading simulation then success
-      const btn = e.submitter || e.target.querySelector('button[type=submit]');
-      btn.disabled = true;
-      btn.textContent = 'Обробка...';
-      setTimeout(()=>{
-        btn.disabled = false;
-        btn.textContent = 'Підтвердити замовлення';
-        alert('Дякуємо! Ваше замовлення прийнято. Ми зв\'яжемося з вами.');
-        e.target.reset();
-      }, 1200);
+    // Checkout button opens order section (scroll)
+    checkoutBtn.addEventListener('click', function(){
+      // close modal if open (Bootstrap)
+      const modalEl = document.getElementById('cartModal');
+      const modal = bootstrap.Modal.getInstance(modalEl);
+      if(modal) modal.hide();
+      document.querySelector('#order')?.scrollIntoView({behavior:'smooth'});
     });
+
+    // Order form submit (simple client-side simulation)
+    orderForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(cart.length === 0){
+        alert('Ваш кошик порожній. Додайте страви перед оформленням.');
+        return;
+      }
+      const name = document.getElementById('customerName').value.trim();
+      const phone = document.getElementById('customerPhone').value.trim();
+      const address = document.getElementById('deliveryAddress').value.trim();
+      const note = document.getElementById('orderNote').value.trim();
+      // Here you'd send data to server via fetch/ajax.
+      // We'll simulate success:
+      const order = {
+        customer: { name, phone, address, note },
+        items: cart,
+        total: cart.reduce((s,i)=> s + i.price*i.qty,0),
+        createdAt: new Date().toISOString()
+      };
+      console.log('Order simulated (send to server):', order);
+      // clear cart
+      cart = [];
+      saveCart();
+      updateCartUI();
+      orderForm.reset();
+      alert('Дякуємо! Ваше замовлення прийнято. Ми зв\'яжемося з вами для підтвердження.');
+      window.scrollTo({ top: 0, behavior:'smooth' });
+    });
+
+    // Load initial cart UI
+    updateCartUI();
+
+    // Unified scroll handler (debounce basic)
+    let lastScroll = 0;
+    window.addEventListener('scroll', function(){
+      const y = window.scrollY || window.pageYOffset;
+      nav.classList.toggle('shadow-lg', y > 60);
+      back.classList.toggle('show', y > 500);
+      lastScroll = y;
+    }, { passive: true });
+
+    // Back to top smooth behavior handled by anchor; but keyboard accessible:
+    back.addEventListener('click', function(e){
+      // default anchor works; ensure smooth
+      e.preventDefault();
+      document.getElementById('home').scrollIntoView({behavior:'smooth'});
+    });
+
+    // Accessibility: keyboard "Enter" on product cards add to cart
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' && document.activeElement && document.activeElement.classList.contains('add-to-cart')){
+        document.activeElement.click();
+      }
+    });
+
+    // Performance tip: lazy-load images for browsers not supporting loading attr
+    // (Modern browsers supported; polyfill omitted for brevity)
+
+    // Ensure AOS refresh on window load after all assets
+    window.addEventListener('load', function(){
+      if(window.AOS && AOS.refresh) AOS.refresh();
+    });
+  })();
   </script>
 </body>
 </html>
